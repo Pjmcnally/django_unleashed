@@ -87,3 +87,17 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Secrets files
+secrets.py
+
+# Migrations    
+migrations/
+
+
+# Database
+db.sqlite3
+
+
+# OS files
+.DS_Store
