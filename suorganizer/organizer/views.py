@@ -1,16 +1,20 @@
-from django.shortcuts import render
-from django.http.response import HttpResponse
+from django.shortcuts import (
+    render, get_object_or_404, render_to_response
+)
 
 from .models import Tag, Startup, NewsLink
 
-from django.template import Context, loader
-
-# Create your views here.
 def homepage(request):
-    tag_list = Tag.objects.all()
-    template = loader.get_template('organizer/tag_list.html')
-    context = Context({'tag_list': tag_list})
-    print(context)
-    output = template.render(context)
-    return HttpResponse(output)
+    return render(
+        request,
+        'organizer/tag_list.html', 
+        {'tag_list': Tag.objects.all()}
+    )
 
+def tag_detail(request, slug):
+    tag = get_object_or_404(Tag, slug__iexact=slug)
+    return render(
+        request,
+        'organizer/tag_detail.html',
+        {'tag': tag}
+    )
