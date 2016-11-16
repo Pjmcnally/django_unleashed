@@ -16,7 +16,7 @@
             <dt>Contact</dt>
                 <dd>{{ startup.contact }}</dd>
             <dt>Tag{{ startup.tags.count|pluralize }}</dt>
-                {% for each tag in startup.tags.all %}
+                {% for tag in startup.tags.all %}
                     <dd><a href="">{{ tag.name|title }}</a></dd>
                 {% endfor %}
         </dl>
