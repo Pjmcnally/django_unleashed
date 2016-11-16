@@ -12,7 +12,7 @@ class Tag(models.Model):
         help_text='A lable for URL config',
     )
 
-    def __str__(sefl):
+    def __str__(self):
         return self.name
 
     class Meta:
