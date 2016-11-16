@@ -13,7 +13,7 @@ class Tag(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.name.title()
 
     class Meta:
         ordering = ['name']
