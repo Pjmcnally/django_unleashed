@@ -4,19 +4,27 @@ from django.shortcuts import (
 
 from .models import Tag, Startup, NewsLink
 
-def tag_list(request):
-    return render(
-        request,
-        'organizer/tag_list.html', 
-        {'tag_list': Tag.objects.all()}
-    )
-
 def tag_detail(request, slug):
     tag = get_object_or_404(Tag, slug__iexact=slug)
     return render(
         request,
         'organizer/tag_detail.html',
         {'tag': tag}
+    )
+
+def tag_list(request):
+    return render(
+        request,
+        'organizer/tag_list.html', 
+        {'tag_list': Tag.objects.all()}
+    ) 
+
+def startup_detail(request, slug):
+    startup = get_object_or_404(Startup, slug__iexact=slug)
+    return render(
+        request,
+        'organizer/startup_detail.html',
+        {'startup': startup}
     )
 
 def startup_list(request):
@@ -26,10 +34,3 @@ def startup_list(request):
         {'startup_list': Startup.objects.all()}
     )
 
-def startup_detail(request, slug):
-    startup = get_object_or_404(Startup, slug__iexact=slug)
-    return render(
-        request,
-        'organizer/startup_detail.html',
-        {'startup': startup}
-    )
