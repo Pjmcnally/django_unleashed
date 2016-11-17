@@ -3,6 +3,22 @@ from django.shortcuts import (
 )
 
 from .models import Tag, Startup, NewsLink
+from .forms import TagForm, StartupForm, NewsLinkForm
+
+def tag_create(request):
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        if form.is_valid():
+            new_tag = form.save()
+            return redirect(new_tag)
+        else: # empty or invalid data
+            form = TagForm()
+    else: # request.method != 'POST'
+        return render(
+            request, 
+            'organizer/tag_form.html', 
+            {'form': form}
+        )
 
 def tag_detail(request, slug):
     tag = get_object_or_404(Tag, slug__iexact=slug)
