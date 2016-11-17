@@ -22,4 +22,4 @@ def post_detail(request, year, month, slug):
         pub_date__month=month,
         slug=slug
     )
-    return render(response, 'blog/post_detail.html', {'post': post})
+    return render(request, 'blog/post_detail.html', {'post': post})
