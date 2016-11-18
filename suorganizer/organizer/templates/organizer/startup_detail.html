@@ -34,6 +34,11 @@
         <ul>
           {% for newslink in startup.newslink_set.all %}
             <li><a href="{{ newslink.link }}">{{ newslink.title|title }}</a></li>
+              <ul>
+                <li>
+                  <a href="{{ newslink.get_update_url }}">
+                    Edit Link</a></li>
+            </ul>
           {% endfor %}
         </ul>
       </section>
