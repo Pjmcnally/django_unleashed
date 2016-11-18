@@ -13,28 +13,6 @@ class NewsLinkCreate(ObjectCreateMixin, View):
     template_name = 'organizer/newslink_form.html'
 
 
-class TagCreate(ObjectCreateMixin, View):
-    form_class = TagForm
-    template_name = 'organizer/tag_form.html'
-
-
-def tag_detail(request, slug):
-    tag = get_object_or_404(Tag, slug__iexact=slug)
-    return render(
-        request,
-        'organizer/tag_detail.html',
-        {'tag': tag}
-    )
-
-
-def tag_list(request):
-    return render(
-        request,
-        'organizer/tag_list.html',
-        {'tag_list': Tag.objects.all()}
-    )
-
-
 class StartupCreate(ObjectCreateMixin, View):
     form_class = StartupForm
     template_name = 'organizer/startup_form.html'
@@ -61,4 +39,26 @@ def startup_list(request):
         request,
         'organizer/startup_list.html',
         {'startup_list': Startup.objects.all()}
+    )
+
+
+class TagCreate(ObjectCreateMixin, View):
+    form_class = TagForm
+    template_name = 'organizer/tag_form.html'
+
+
+def tag_detail(request, slug):
+    tag = get_object_or_404(Tag, slug__iexact=slug)
+    return render(
+        request,
+        'organizer/tag_detail.html',
+        {'tag': tag}
+    )
+
+
+def tag_list(request):
+    return render(
+        request,
+        'organizer/tag_list.html',
+        {'tag_list': Tag.objects.all()}
     )
