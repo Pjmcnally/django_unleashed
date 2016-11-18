@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 
 from .models import Tag, Startup, NewsLink
 
+
 class SlugCleanMixin:
     """Mixin class for slug cleaning method"""
 
@@ -13,6 +14,7 @@ class SlugCleanMixin:
         if new_slug == 'create':
             raise ValidationError('Slug may not be "create".')
         return new_slug
+
 
 class TagForm(SlugCleanMixin, forms.ModelForm):
     class Meta:
@@ -33,5 +35,3 @@ class NewsLinkForm(forms.ModelForm):
     class Meta:
         model = NewsLink
         fields = '__all__'
-
-

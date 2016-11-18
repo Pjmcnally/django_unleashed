@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 
+
 # Create your models here.
 class Tag(models.Model):
     name = models.CharField(
@@ -49,6 +50,7 @@ class Startup(models.Model):
     def get_absolute_url(self):
         return reverse('organizer_startup_detail', kwargs={'slug': self.slug})
 
+
 class NewsLink(models.Model):
     title = models.CharField(max_length=63)
     pub_date = models.DateField('date published')
@@ -57,7 +59,7 @@ class NewsLink(models.Model):
 
     def __str__(self):
         return "{}: {}".format(
-            self.startup, 
+            self.startup,
             self.title
         )
 

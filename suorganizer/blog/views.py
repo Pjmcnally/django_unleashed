@@ -14,6 +14,7 @@ class PostList(View):
             {'post_list': Post.objects.all()}
         )
 
+
 @require_http_methods(['HEAD', 'GET'])
 def post_detail(request, year, month, slug):
     post = get_object_or_404(

@@ -29,5 +29,4 @@ urlpatterns = [
         tag_detail,
         name='organizer_tag_detail'
     ),
-    
 ]

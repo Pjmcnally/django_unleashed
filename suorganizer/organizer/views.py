@@ -6,14 +6,15 @@ from django.views.generic import View
 from .models import Tag, Startup, NewsLink
 from .forms import TagForm, StartupForm, NewsLinkForm
 
+
 class TagCreate(View):
     form_class = TagForm
     template_name = 'organizer/tag_form.html'
 
-    def get(self,request):
+    def get(self, request):
         return render(
-            request, 
-            self.template_name, 
+            request,
+            self.template_name,
             {'form': self.form_class()}
         )
 
@@ -24,10 +25,11 @@ class TagCreate(View):
             return redirect(new_tag)
         else:
             return render(
-                request, 
-                self.template_name, 
+                request,
+                self.template_name,
                 {'form': bound_form}
             )
+
 
 def tag_detail(request, slug):
     tag = get_object_or_404(Tag, slug__iexact=slug)
@@ -37,12 +39,14 @@ def tag_detail(request, slug):
         {'tag': tag}
     )
 
+
 def tag_list(request):
     return render(
         request,
-        'organizer/tag_list.html', 
+        'organizer/tag_list.html',
         {'tag_list': Tag.objects.all()}
-    ) 
+    )
+
 
 def startup_detail(request, slug):
     startup = get_object_or_404(Startup, slug__iexact=slug)
@@ -52,10 +56,10 @@ def startup_detail(request, slug):
         {'startup': startup}
     )
 
+
 def startup_list(request):
     return render(
         request,
         'organizer/startup_list.html',
         {'startup_list': Startup.objects.all()}
     )
-
