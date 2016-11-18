@@ -22,7 +22,6 @@ urlpatterns = [
     url(
         r'^tag/create/$',
         TagCreate.as_view(),
-        # tag_create,
         name='organizer_tag_create'
     ),
     url(
