@@ -14,7 +14,7 @@ urlpatterns = [
         name='blog_post_detail'
     ),
     url(
-        r'^create$',
+        r'^create/$',
         PostCreate.as_view(),
         name='blog_post_create'
     ),
