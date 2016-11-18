@@ -8,7 +8,7 @@ from .forms import TagForm, StartupForm, NewsLinkForm
 
 class TagCreate(View):
     form_class = TagForm
-    template_name = 'organizer_tag_create'
+    template_name = 'organizer/tag_form.html'
 
     def get(self,request):
         return render(
@@ -17,19 +17,17 @@ class TagCreate(View):
             {'form': self.form_class()}
         )
 
-def tag_create(request):
-    if request.method == 'POST':
-        form = TagForm(request.POST)
-        if form.is_valid():
-            new_tag = form.save()
+    def post(self, request):
+        bound_form = self.form_class(request.POST)
+        if bound_form.is_valid():
+            new_tag = bound_form.save()
             return redirect(new_tag)
-    else: # request.method != 'POST'
-        form = TagForm()
-    return render(
-        request, 
-        'organizer/tag_form.html', 
-        {'form': form}
-    )
+        else:
+            return render(
+                request, 
+                self.template_name, 
+                {'form': bound_form}
+            )
 
 def tag_detail(request, slug):
     tag = get_object_or_404(Tag, slug__iexact=slug)
