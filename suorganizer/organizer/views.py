@@ -33,7 +33,7 @@ class NewsLinkDelete(View):
 
 class NewsLinkUpdate(View):
     form_class = NewsLinkForm
-    template_name = 'organizer/newslink_form_update.hmtl'
+    template_name = 'organizer/newslink_form_update.html'
 
     def get(self, request, pk):
         newslink = get_object_or_404(NewsLink, pk=pk)
