@@ -1,13 +1,13 @@
 {% extends partent_template|default:"organizer/base_organizer.html" %}
 
 {% block title %}
-{{ blog.super }} - Delete Tag
+{{ block.super }} - Delete Tag
 {% endblock %}
 
 {% block content %}
   <div>
     <div>
-      <form action="{{ tag.get_delete_url }}" methoc="post">
+      <form action="{{ tag.get_delete_url }}" method="post">
         {% csrf_token %}
         <p>
           Are you sure you want to delete tag {{ tag.name }}?
