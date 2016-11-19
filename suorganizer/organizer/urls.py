@@ -44,6 +44,5 @@ urlpatterns = [
         name='organizer_tag_update'),
     url(r'^tag/(?P<slug>[\w\-]+)/$',
         tag_detail,
-        name='organizer_tag_detail'
-    ),
+        name='organizer_tag_detail'),
 ]
