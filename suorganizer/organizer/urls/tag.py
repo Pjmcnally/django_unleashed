@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import (
+from ..views import (
     TagCreate, TagDelete, TagUpdate, tag_detail, tag_list,
 )
 
